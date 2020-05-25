@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Upload</title>
+    </h:head>
+    <h:body>
+        <h:form enctype="multpart/form-data">
+            <p:growl id="growl" life="3000" showDetail="true"/>
+            <p:fileUpload id="fileUpload" fileUploadListener="#{uploadMB.upload}" 
+                        label="Selecionar..." uploadLabel="Upload" cancelLabel="Cancelar"
+                        allowTypes="/(\.|\/)(txt)$/" invalidFileMessage="São permitidos somente arquivos .txt"
+                        sizeLimit="100000" invalidSizeMessage="O tamanho máximo permitido é de 100KB."
+                        fileLimit="1" fileLimitMessage="Só é possível escolher 1 arquivo por vez."
+                        update="growl, dadosarquivo, fileUpload"/>
+            <br/>
+            <font style="vertical-align: inherit;">
+                <h3> Dados do Arquivo </h3>
+            </font>
+            <font style="vertical-align: inherit;">
+                <div class="ui-g">
+                    <p:inputTextarea id="dadosarquivo" value="#{uploadMB.arquivo}" style="width: 100%" rows="17" 
+                                     autoResize="false"/>
+                </div>
+            </font>
+        </h:form>
+    </h:body>
+</html>
+
